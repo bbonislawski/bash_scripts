@@ -12,10 +12,10 @@ repository_name=${PWD##*/}
 git checkout -b replace-factory-girl-with-factory-bot
 if [[ "$OSTYPE" == "darwin"* ]]; then
   grep -e FactoryGirl **/*.rake **/*.rb -s -l | xargs sed -i "" "s|FactoryGirl|FactoryBot|"
-  grep -e factory_girl **/*.rake **/*.rb -s -l | xargs sed -i "" "s|factory_girl|factory_bot|"
+  grep -e factory_girl **/*.rake **/*.rb **/*.gemspec Gemfile -s -l | xargs sed -i "" "s|factory_girl|factory_bot|"
 else
   grep -e FactoryGirl **/*.rake **/*.rb -s -l | xargs sed -i "s|FactoryGirl|FactoryBot|"
-  grep -e factory_girl **/*.rake **/*.rb -s -l | xargs sed -i "s|factory_girl|factory_bot|"
+  grep -e factory_girl **/*.rake **/*.rb  **/*.gemspec Gemfile -s -l | xargs sed -i "s|factory_girl|factory_bot|"
 fi
 
 git add .
